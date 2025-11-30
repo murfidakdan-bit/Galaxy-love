@@ -1,128 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Untuk Queensha</title>
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- THREE JS CDN -->
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://unpkg.com/three@0.152.2/build/three.module.js",
-        "three/addons/controls/OrbitControls.js": "https://unpkg.com/three@0.152.2/examples/jsm/controls/OrbitControls.js",
-        "three/examples/jsm/loaders/FontLoader.js": "https://unpkg.com/three@0.152.2/examples/jsm/loaders/FontLoader.js",
-        "three/examples/jsm/geometries/TextGeometry.js": "https://unpkg.com/three@0.152.2/examples/jsm/geometries/TextGeometry.js"
-      }
-    }
-  </script>
-
-  <style>
-    /* Tombol Musik */
-    #player { display: none; }
-
-    #musicButton {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      padding: 12px 20px;
-      background-color: #ffffff10;
-      color: white;
-      border: 1px solid white;
-      border-radius: 8px;
-      cursor: pointer;
-      z-index: 9999;
-      font-weight: bold;
-      backdrop-filter: blur(5px);
-    }
-    #musicButton:hover { background-color: #ffffff30; }
-
-    /* CREDIT DI KANAN BAWAH */
-    .credit-text {
-      position: fixed;
-      bottom: 12px;
-      right: 12px;
-      font-size: 16px;
-      font-family: Arial, sans-serif;
-      font-weight: bold;
-      color: white;
-      padding: 6px 12px;
-      border-radius: 8px;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 9999;
-      pointer-events: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Created by Akhdan • for Queensha</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <div id="container"></div>
 
-  <div id="landscape-warning">
-    <div class="warning-content">
-      <div class="rotate-icon"></div>
-      <!-- INI TULISAN ASLI PUNYA MIKO (UDAH DIHAPUS): -->
-      <!-- <h1>Happy Girlfriend Day</h1> -->
-      <h1>Untuk Queensha</h1>  <!-- aman -->
-      <div class="stars-bg"></div>
-    </div>
-  </div>
-
-  <div id="dark-overlay"></div>
-  <div id="info"></div>
-
-  <!-- CREDIT PUNYA LU -->
-  <h1 class="credit-text">Created by Akhdan • for Queensha</h1>
-
-  <!-- TOMBOL MUSIK -->
-  <button id="musicButton" disabled>Mainkan Musik 🎵</button>
-  <div id="player"></div>
-  <script src="https://www.youtube.com/iframe_api"></script>
-
-  <!-- YOUTUBE SCRIPT -->
-  <script>
-    let player;
-    const startTime = 227;
-    const endTime = 261;
-
-    window.onYouTubeIframeAPIReady = function() {
-      player = new YT.Player('player', {
-        height: '0',
-        width: '0',
-        videoId: 'd4OMqGKBl6E',
-        playerVars: {
-          autoplay: 0,
-          start: startTime,
-          end: endTime,
-          controls: 0,
-          loop: 1,
-          playlist: 'd4OMqGKBl6E'
-        },
-        events: {
-          onReady: () => {
-            const btn = document.getElementById('musicButton');
-            btn.disabled = false;
-            btn.innerText = "Mainkan Musik 🎵";
-          },
-          onStateChange: (event) => {
-            if (event.data === YT.PlayerState.ENDED) {
-              player.seekTo(startTime);
-            }
-          }
+    <!-- HAPUS TULISAN LAMA + TRANSPARAN -->
+    <style>
+        h1, h2, h3, p, .happy-text, .old-text {
+            display: none !important;
         }
-      });
-    };
+    </style>
 
-    document.getElementById('musicButton').addEventListener('click', () => {
-      if (player) {
-        player.playVideo();
-        document.getElementById('musicButton').style.display = 'none';
-      }
+    <!-- TOMBOL MUSIK -->
+    <audio id="bgMusic" loop>
+        <source src="musik.mp3" type="audio/mpeg">
+    </audio>
+    <button id="playButton">Mainkan Musik 🎵</button>
+
+    <!-- PLANET -->
+    <div class="planet-container">
+        <img src="planet.png" class="planet" alt="Planet">
+    </div>
+
+    <!-- CREDIT ELEGAN -->
+    <div class="credit">
+        Created by <span>Akhdan</span> • for <span>Queensha</span>
+    </div>
+
+<script>
+    const music = document.getElementById("bgMusic");
+    const btn = document.getElementById("playButton");
+
+    btn.addEventListener("click", () => {
+        music.play();
+        btn.style.display = "none";
     });
-  </script>
+</script>
 
-  <!-- ANIMASI GALAXY -->
-  <script type="module" src="script.js"></script>
 </body>
 </html>
