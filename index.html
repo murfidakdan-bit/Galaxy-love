@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Galaxy with Zoom Effect</title>
+  <title>Untuk Queensha</title>
   <link rel="stylesheet" href="style.css" />
+
+  <!-- THREE JS CDN -->
   <script type="importmap">
     {
       "imports": {
@@ -15,10 +17,11 @@
       }
     }
   </script>
+
   <style>
-    #player {
-      display: none;
-    }
+    /* Tombol Musik */
+    #player { display: none; }
+
     #musicButton {
       position: fixed;
       top: 20px;
@@ -33,8 +36,22 @@
       font-weight: bold;
       backdrop-filter: blur(5px);
     }
-    #musicButton:hover {
-      background-color: #ffffff30;
+    #musicButton:hover { background-color: #ffffff30; }
+
+    /* CREDIT DI KANAN BAWAH */
+    .credit-text {
+      position: fixed;
+      bottom: 12px;
+      right: 12px;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 9999;
+      pointer-events: none; /* Biar gak ngehalang gerakin kamera */
     }
   </style>
 </head>
@@ -45,24 +62,28 @@
   <div id="landscape-warning">
     <div class="warning-content">
       <div class="rotate-icon"></div>
-      <h1>Stellar Bloom</h1>
-      <h1>Tinh Cầu</h1>
+      <h1>Untuk Queensha</h1>
       <div class="stars-bg"></div>
     </div>
   </div>
 
   <div id="dark-overlay"></div>
   <div id="info"></div>
-<h1 style="position: fixed; bottom: 10px; right: 10px; font-size: 18px; font-family: Arial, sans-serif; color: white; background: rgba(0, 0, 0, 0.4); padding: 6px 12px; border-radius: 8px; z-index: 9999;">
-  Create by akhdan
-</h1>
+
+  <!-- CREDIT PUNYA LU -->
+  <h1 class="credit-text">Created by Akhdan • for Queensha</h1>
+
+  <!-- TOMBOL MUSIK -->
   <button id="musicButton" disabled>Mainkan Musik 🎵</button>
   <div id="player"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
+
+  <!-- YOUTUBE SCRIPT -->
   <script>
     let player;
-     const startTime = 227;
+    const startTime = 227;
     const endTime = 261;
+
     window.onYouTubeIframeAPIReady = function() {
       player = new YT.Player('player', {
         height: '0',
@@ -84,7 +105,7 @@
           },
           onStateChange: (event) => {
             if (event.data === YT.PlayerState.ENDED) {
-              player.seekTo(90);
+              player.seekTo(startTime);
             }
           }
         }
@@ -99,6 +120,7 @@
     });
   </script>
 
+  <!-- ANIMASI GALAXY -->
   <script type="module" src="script.js"></script>
 </body>
 </html>
