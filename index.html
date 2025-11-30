@@ -3,43 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Created by Akhdan • for Queensha</title>
-    <link rel="stylesheet" href="style.css">
+    <title>For Queensha</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            animation: fadeIn 1.5s ease;
+        }
+        h1 {
+            font-size: 32px;
+            animation: slideDown 1s ease;
+        }
+        p {
+            font-size: 14px;
+            margin-top: -5px;
+            animation: fadeIn 2s ease;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            animation: pop 1.2s ease;
+        }
+        @keyframes fadeIn { from {opacity:0;} to{opacity:1;} }
+        @keyframes slideDown { from{transform:translateY(-30px);opacity:0;} to{transform:translateY(0);opacity:1;} }
+        @keyframes pop { 0%{transform:scale(0);} 100%{transform:scale(1);} }
+    </style>
 </head>
 <body>
 
-    <!-- HAPUS TULISAN LAMA + TRANSPARAN -->
-    <style>
-        h1, h2, h3, p, .happy-text, .old-text {
-            display: none !important;
+    <h1>Planet Queensha 💫</h1>
+    <p>Created by Akhdan • Special for Queensha</p>
+
+    <button onclick="playMusic()">🎵 Mainkan Musik</button>
+
+    <audio id="bgMusic" src="musik.mp3"></audio>
+
+    <script>
+        function playMusic() {
+            const music = document.getElementById('bgMusic');
+            music.play();
         }
-    </style>
-
-    <!-- TOMBOL MUSIK -->
-    <audio id="bgMusic" loop>
-        <source src="musik.mp3" type="audio/mpeg">
-    </audio>
-    <button id="playButton">Mainkan Musik 🎵</button>
-
-    <!-- PLANET -->
-    <div class="planet-container">
-        <img src="planet.png" class="planet" alt="Planet">
-    </div>
-
-    <!-- CREDIT ELEGAN -->
-    <div class="credit">
-        Created by <span>Akhdan</span> • for <span>Queensha</span>
-    </div>
-
-<script>
-    const music = document.getElementById("bgMusic");
-    const btn = document.getElementById("playButton");
-
-    btn.addEventListener("click", () => {
-        music.play();
-        btn.style.display = "none";
-    });
-</script>
+    </script>
 
 </body>
 </html>
